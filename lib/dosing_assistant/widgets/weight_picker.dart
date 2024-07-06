@@ -38,38 +38,18 @@ class _WeightPickerState extends State<WeightPicker> {
                   style: Theme.of(context).textTheme.headlineMedium,
                 ),
                 const SizedBox(
-                  width: 12,
+                  width: 8,
                 ),
-                const Text('kg'),
-                //   DropdownButtonHideUnderline(
-                //     child: DropdownButton<String>(
-                //       value: _currentUnit,
-                //       items: <String>['kg', 'lb']
-                //           .map<DropdownMenuItem<String>>((String value) {
-                //         return DropdownMenuItem<String>(
-                //           value: value,
-                //           child: Text(value),
-                //         );
-                //       }).toList(),
-                //       onChanged: (String? newValue) {
-                //         setState(() {
-                //           _currentUnit = newValue!;
-                //           widget.onValueChanged(_currentValue, _currentUnit);
-                //         });
-                //       },
-                //     ),
-                //   ),
+                Text('kg', style: Theme.of(context).textTheme.bodySmall),
               ],
             ),
           ],
         ),
         Slider(
-          thumbColor: Theme.of(context).colorScheme.secondary,
           allowedInteraction: SliderInteraction.tapAndSlide,
           value: _currentValue.toDouble(),
-          min: 40,
-          max: 200,
-          divisions: 80,
+          min: 30,
+          max: 180,
           onChanged: (double newValue) {
             setState(() {
               _currentValue = newValue.round();

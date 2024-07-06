@@ -73,7 +73,7 @@ class ApplicationModel {
   }
 
   bool tooMuchInterval() {
-    return maxInfisionRate - minInfisionRate / interval > 10 ? true : false;
+    return (maxInfisionRate - minInfisionRate) / interval > 10 ? true : false;
   }
 }
 
@@ -102,6 +102,12 @@ class Drug {
   }
 }
 
+const List<DosingModel> allInfusions = [
+  dobutamineInfusion,
+  nicardipineInfusion,
+  dopamineInfusion
+];
+
 const dobutamineInfusion = DosingModel(
   name: 'Dobutamin infüzyonu',
   applications: [
@@ -116,7 +122,7 @@ const dobutamineInfusion = DosingModel(
       infusionRateUnit: 'mcg/kg/min',
       minInfisionRate: 2,
       maxInfisionRate: 20,
-      interval: 6,
+      interval: 3,
       applicationType: ApplicationType.infusion,
     ),
   ],
@@ -146,7 +152,7 @@ const nicardipineInfusion = DosingModel(
   ],
 );
 
-const dopamineDose = DosingModel(
+const dopamineInfusion = DosingModel(
   name: 'Dopamin infüzyonu',
   applications: [
     ApplicationModel(
@@ -154,7 +160,7 @@ const dopamineDose = DosingModel(
             name: 'Dopamin',
             amount: 200,
             unit: 'mg',
-            tradeName: 'Dobetal',
+            tradeName: 'Dobetal®',
             volume: 5),
         infusionRateValue: 10,
         minInfisionRate: 2.5,

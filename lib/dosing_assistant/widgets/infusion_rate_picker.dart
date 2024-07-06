@@ -40,6 +40,7 @@ class _InfusionRateSelectingWidgetState
             const Expanded(child: SizedBox()),
             Expanded(
               child: RichText(
+                textAlign: TextAlign.center,
                 text: TextSpan(
                   style: DefaultTextStyle.of(context).style,
                   children: <TextSpan>[
@@ -48,7 +49,7 @@ class _InfusionRateSelectingWidgetState
                       style: Theme.of(context).textTheme.headlineMedium,
                     ),
                     TextSpan(
-                      text: ' ${widget.dose.infusionRateUnit}',
+                      text: '\n${widget.dose.infusionRateUnit}',
                       style: Theme.of(context).textTheme.labelSmall,
                     ),
                   ],
