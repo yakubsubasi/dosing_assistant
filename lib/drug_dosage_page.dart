@@ -1,8 +1,8 @@
 import 'package:dosing_assistant/data.dart';
-import 'package:dosing_assistant/dosing_assistant/widgets/infusion_rate_picker.dart';
-import 'package:dosing_assistant/dosing_assistant/widgets/infusion_result_widget.dart';
-import 'package:dosing_assistant/dosing_assistant/widgets/segmented_dilution_solution_picker.dart';
-import 'package:dosing_assistant/dosing_assistant/widgets/weight_picker.dart';
+import 'package:dosing_assistant/widgets/infusion_rate_picker.dart';
+import 'package:dosing_assistant/widgets/infusion_result_widget.dart';
+import 'package:dosing_assistant/widgets/segmented_dilution_solution_picker.dart';
+import 'package:dosing_assistant/widgets/weight_picker.dart';
 import 'package:flutter/material.dart';
 
 class DrugDosagePage extends StatefulWidget {
@@ -18,25 +18,31 @@ class _DrugDosagePageState extends State<DrugDosagePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(leading: const BackButton()),
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  widget.dose.name,
-                  style: Theme.of(context).textTheme.headlineMedium,
+          child: Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 600),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      widget.dose.name,
+                      style: Theme.of(context).textTheme.headlineMedium,
+                    ),
+                    const SizedBox(height: 16),
+                    ...List.generate(
+                      widget.dose.applications.length,
+                      (index) => DrugDosageListItem(
+                        dose: widget.dose.applications[index],
+                      ),
+                    ),
+                  ],
                 ),
-                const SizedBox(height: 16),
-                ...List.generate(
-                  widget.dose.applications.length,
-                  (index) => DrugDosageListItem(
-                    dose: widget.dose.applications[index],
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
         ),

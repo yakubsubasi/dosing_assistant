@@ -1,8 +1,8 @@
 # Makefile for deploying Flutter web app to GitHub Pages
 
 # Update These Variables
-BASE_HREF = '/dosing_asssistant_web/'
-GITHUB_REPO = https://github.com/yakubsubasi/dosing_asssistant_web.git
+BASE_HREF = '/dosing-assistant-web/'
+GITHUB_REPO = https://github.com/yakubsubasi/dosing-assistant-web.git
 BUILD_VERSION := $(shell grep 'version:' pubspec.yaml | awk '{print $$2}')
 #CUSTOM_DOMAIN = flutterwebexample.1manstartup.com
 
